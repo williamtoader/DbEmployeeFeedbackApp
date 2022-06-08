@@ -1,7 +1,7 @@
  # Employee Feedback App
 
 - [X] Authentication
-- [ ] Create account
+- [X] Create account
 - [ ] Profile
 - [ ] Main list
 - [ ] Colleague details page
