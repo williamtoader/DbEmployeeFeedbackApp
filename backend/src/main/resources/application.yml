@@ -1,0 +1,22 @@
+spring:
+  security:
+    user:
+      name: "admin"
+      password: "admin"
+  datasource:
+    url: jdbc:mariadb://localhost:3306/efasample
+    username: root
+    password: testpasswd
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
+    path: /graphql
+    schema:
+      printer:
+        enabled: true
