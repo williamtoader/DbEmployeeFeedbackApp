@@ -38,4 +38,16 @@ public class UserController {
             .build()
         );
     }
+
+    @MutationMapping("DeleteUser")
+    public Long deleteUser(@Argument("userId") Long userId) {
+        userRepository.deleteById(userId);
+        return userId;
+    }
+
+    @MutationMapping("DeleteUsers")
+    public List<Long> deleteUsers(@Argument("userIds") List<Long> userIds) {
+        userRepository.deleteAllByIdInBatch(userIds);
+        return userIds;
+    }
 }

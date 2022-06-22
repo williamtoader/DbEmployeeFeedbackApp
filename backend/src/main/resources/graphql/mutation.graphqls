@@ -1,6 +1,8 @@
 type Mutation {
 #    User creation
-    CreateUser(input: CreateUserInput!): User!
+    CreateUser(input: CreateUserInput!): User!,
+    DeleteUser(userId: ID!): ID!
+    DeleteUsers(userIds: [ID!]): [ID!]
 }
 
 input CreateUserInput {
