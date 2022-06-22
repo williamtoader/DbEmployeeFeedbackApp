@@ -1,6 +1,6 @@
 # Employee Feedback Application
 
-## Services
+
 
 ### Model: User
 #### Fields:
@@ -47,6 +47,9 @@ Fields:
 ##### Transient:
 - validate(plainTextPassword: String): Boolean
 
+
+## Services
+
 ### LoginService:
 
 #### Methods:
@@ -58,6 +61,7 @@ This service does the E-mail validation
 
 ### AccessControlService
 - Checks E-mail is confirmed
+- Retrieves user permissions
 - Provides context to other services (Service-Service and Controller-Service access is done only through context)
 
 
