@@ -31,7 +31,7 @@
 - score3: Double  
 ... where score1, score2 will be replaced with the name of the scores
 
-**DTO**: ScoreOutputDTO
+**DTO**: MeanScoreOutput
 Fields:
 - score1: Double
 - score2: Double
