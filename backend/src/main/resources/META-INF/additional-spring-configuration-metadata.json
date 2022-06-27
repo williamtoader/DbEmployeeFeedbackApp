@@ -4,5 +4,5 @@
       "name": "efa.meta.version",
       "type": "java.lang.String",
       "description": "Application version string"
-  }
-] }
+    }
+  ] }

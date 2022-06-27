@@ -12,6 +12,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: ${EFA_DDL_AUTO}
-efa:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   meta:
     version: DEV-BUILD-@maven.build.timestamp@
