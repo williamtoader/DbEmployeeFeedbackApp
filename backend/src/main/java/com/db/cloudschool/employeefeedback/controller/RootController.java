@@ -1,5 +1,7 @@
 package com.db.cloudschool.employeefeedback.controller;
 
+import com.db.cloudschool.employeefeedback.util.ResourceLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,20 +21,17 @@ public class RootController {
     @Value("${efa.meta.version}")
     private String version;
 
-    /** Gets the author of the running commit
-     */
-    @Value("classpath:author-id.txt")
-    private Resource author;
+
 
     @GetMapping
 
     public String getAppRoot() {
         try {
             return "Running EFA backend version: " + version + "-" +
-                    Files.readString(author.getFile().toPath())
+                    ResourceLoader.getResourceFileAsString("author-id.txt")
                             .toUpperCase(Locale.ROOT)
                             .replace(' ', '-');
-        } catch (IOException exception) {
+        } catch (RuntimeException exception) {
             return "Running EFA backend version: " + version + "-" + "UNKNOWN-AUTHOR";
         }
     }

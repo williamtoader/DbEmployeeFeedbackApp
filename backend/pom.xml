@@ -98,17 +98,10 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.2</version>
-                <configuration>
                     <includes>
-                        <include>**/*.properties</include>
-                        <include>**/*.xml</include>
-                        <include>**/*.txt</include>
+                        <include>resources/*.properties</include>
+                        <include>resources/*.xml</include>
+                        <include>resources/*.txt</include>
                     </includes>
                 </configuration>
             </plugin>
