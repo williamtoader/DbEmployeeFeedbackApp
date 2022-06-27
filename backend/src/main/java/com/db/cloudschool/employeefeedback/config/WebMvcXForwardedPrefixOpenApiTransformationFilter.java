@@ -23,7 +23,7 @@ public class WebMvcXForwardedPrefixOpenApiTransformationFilter implements WebMvc
         OpenAPI openApi = context.getSpecification();
         context.request().ifPresent(httpServletRequest -> {
             String xForwardedPrefix = httpServletRequest.getHeader(X_FORWARDED_PREFIX);
-            if (!xForwardedPrefix.isEmpty()) {
+            if (xForwardedPrefix != null && !xForwardedPrefix.isEmpty()) {
                 String[] prefixArr = xForwardedPrefix.split(COMMA);
                 if (prefixArr.length > 0) {
                     String prefix = fixup(prefixArr[0]);
