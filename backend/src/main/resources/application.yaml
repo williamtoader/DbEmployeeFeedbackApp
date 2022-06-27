@@ -11,4 +11,4 @@ spring:
       ddl-auto: ${EFA_DDL_AUTO}
 efa:
   meta:
-    version: RELEASE-NULL
+    version: RELEASE-@project.version@

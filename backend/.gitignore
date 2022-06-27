@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Author ID #
+backend/src/main/resources/author-id.txt
