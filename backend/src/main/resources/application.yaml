@@ -9,6 +9,9 @@ spring:
     hibernate:
       # set to validate after setup, set to update if schema changed
       ddl-auto: ${EFA_DDL_AUTO}
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 efa:
   meta:
     version: RELEASE-@project.version@

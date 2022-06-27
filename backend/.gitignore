@@ -33,3 +33,4 @@ build/
 .vscode/
 
 # Author ID #
+/src/main/resources/author-id.txt
