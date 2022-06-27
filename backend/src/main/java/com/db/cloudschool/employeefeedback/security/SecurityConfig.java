@@ -20,6 +20,7 @@ public class SecurityConfig {
                 .antMatchers("/v3/**").permitAll()
                 // Allow login
                 .antMatchers("/login").permitAll()
+                .antMatchers("/").permitAll()
                 // Allow the rest of URLs to be accessed only by authenticated users.
                 .antMatchers("/**").authenticated();
         return http.build();
