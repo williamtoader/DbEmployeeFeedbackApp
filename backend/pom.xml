@@ -98,11 +98,6 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-                    <includes>
-                        <include>resources/*.properties</include>
-                        <include>resources/*.xml</include>
-                        <include>resources/*.txt</include>
-                    </includes>
                 </configuration>
             </plugin>
         </plugins>
