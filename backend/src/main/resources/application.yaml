@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/efa-test
+    username: ${EFA_POSTGRES_UNAME}
+    password: ${EFA_POSTGRES_PASSWD}
+    driver-class-name: org.postgresql.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+efa:
+  meta:
+    version: DEFAULT-PROFILE-@project.version@
