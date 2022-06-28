@@ -46,7 +46,7 @@ public class WebMvcXForwardedPrefixOpenApiTransformationFilter implements WebMvc
     }
 
     private String fixup(String path) {
-        if (path.isEmpty()
+        if (path != null && path.isEmpty()
                 || "/".equals(path)
                 || "//".equals(path)) {
             return "/";
