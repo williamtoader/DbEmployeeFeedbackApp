@@ -2,6 +2,7 @@ package com.db.cloudschool.employeefeedback.config;
 
 import io.swagger.v3.oas.models.servers.Server;
 import io.swagger.v3.oas.models.OpenAPI;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.util.UriComponents;
@@ -41,16 +42,19 @@ public class WebMvcXForwardedPrefixOpenApiTransformationFilter implements WebMvc
     }
 
     @Override
-    public boolean supports(DocumentationType delimiter) {
+    public boolean supports(@NonNull DocumentationType delimiter) {
         return delimiter == DocumentationType.OAS_30;
     }
 
     private String fixup(String path) {
-        if (path != null && path.isEmpty()
-                || "/".equals(path)
-                || "//".equals(path)) {
-            return "/";
+        if(path != null) {
+            if (path.isEmpty()
+                    || "/".equals(path)
+                    || "//".equals(path)) {
+                return "/";
+            }
+            return StringUtils.trimTrailingCharacter(path.replace("//", "/"), '/');
         }
-        return StringUtils.trimTrailingCharacter(path.replace("//", "/"), '/');
+        else return null;
     }
 }
