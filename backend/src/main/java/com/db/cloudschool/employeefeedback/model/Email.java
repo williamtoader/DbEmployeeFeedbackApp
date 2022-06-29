@@ -1,21 +1,22 @@
 package com.db.cloudschool.employeefeedback.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.apache.catalina.User;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
-public class Email implements Serializable{
+@AllArgsConstructor
+public class Email {
+    @Column(unique = true)
+    private String token;
+
     @Id
     private String address;
 

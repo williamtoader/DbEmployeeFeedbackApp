@@ -22,6 +22,7 @@ public class SecurityConfig {
                 .antMatchers("/login").permitAll()
                 // Allow app root
                 .antMatchers("/").permitAll()
+                .antMatchers("/mail").permitAll()
                 // Allow the rest of URLs to be accessed only by authenticated users.
                 .antMatchers("/**").authenticated();
         return http.build();
