@@ -1,10 +1,7 @@
 package com.db.cloudschool.employeefeedback.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +12,9 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@Builder
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Identity implements Serializable {
     @Id
     @GeneratedValue
