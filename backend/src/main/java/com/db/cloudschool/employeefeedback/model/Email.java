@@ -1,11 +1,8 @@
 package com.db.cloudschool.employeefeedback.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
-import org.apache.catalina.User;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Getter

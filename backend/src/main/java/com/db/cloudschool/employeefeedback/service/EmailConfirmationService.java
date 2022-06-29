@@ -1,7 +1,6 @@
 package com.db.cloudschool.employeefeedback.service;
 
 import com.db.cloudschool.employeefeedback.model.Email;
-import com.db.cloudschool.employeefeedback.model.Identity;
 import com.db.cloudschool.employeefeedback.repositories.EmailRepository;
 import com.mailjet.client.errors.MailjetException;
 import lombok.RequiredArgsConstructor;

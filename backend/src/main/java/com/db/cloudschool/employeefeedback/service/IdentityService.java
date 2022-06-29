@@ -6,7 +6,6 @@ import com.db.cloudschool.employeefeedback.model.Email;
 import com.db.cloudschool.employeefeedback.model.Identity;
 import com.db.cloudschool.employeefeedback.model.Profile;
 import com.db.cloudschool.employeefeedback.repositories.IdentityRepository;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
