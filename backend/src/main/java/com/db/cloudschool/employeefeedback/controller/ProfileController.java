@@ -18,11 +18,26 @@ public class ProfileController {
     @Autowired
     ProfileService profileService;
 
+    /**
+     * This function will send a request to find
+     * the profile with the specified id
+     * @param id
+     * @return the profile with the specified id, if found
+     * @throws ProfileNotFoundException
+     */
     @GetMapping("/{id}")
-    public Profile getProfileById(@PathVariable Long id){
+    public Profile getProfileById(@PathVariable Long id) throws ProfileNotFoundException {
         return profileService.getProfileById(id);
     }
 
+    /**
+     * This function will send a request to find all profiles
+     * that have either the first name or the last name equal
+     * to the one sent as an argument
+     * @param name
+     * @return an arraylist of profiles
+     * @throws ProfileNotFoundException
+     */
     @GetMapping("/{name}")
     public ArrayList<Profile> getProfilesByName(@PathVariable String name) throws ProfileNotFoundException {
         Set<Profile> profileSet = new HashSet<>();
@@ -31,25 +46,52 @@ public class ProfileController {
         return new ArrayList<>(profileSet);
     }
 
+    /**
+     * This function will send a request to find
+     * all profiles with the specified full name
+     * @param firstName
+     * @param lastName
+     * @return a list of profiles
+     * @throws ProfileNotFoundException
+     */
     @GetMapping("/{firstName}/{lastName}")
     public List<Profile> getProfilesByFullName(@PathVariable String firstName, @PathVariable String lastName) throws ProfileNotFoundException {
         return profileService.getProfilesByFullName(firstName, lastName);
     }
 
+    /**
+     * This function will send a request to register
+     * a profile in the database
+     * @param profile
+     * @return the newly registered profile
+     */
     @PostMapping("/register")
     public Profile register(@RequestBody Profile profile){
         profileService.register(profile);
         return profile;
     }
 
+    /**
+     * This function will send a request to update
+     * a profile in the database
+     * @param profile
+     * @return the newly updated profile
+     */
     @PostMapping("/update")
     public Profile update(@RequestBody Profile profile){
         profileService.update(profile);
         return profile;
     }
 
+    /**
+     * This function will send a request to remove
+     * a profile from the database
+     * @param id
+     * @return the deleted profile
+     * @throws ProfileNotFoundException
+     */
     @DeleteMapping("/delete/{id}")
-    public Profile delete(@PathVariable Long id){
+    public Profile delete(@PathVariable Long id) throws ProfileNotFoundException {
         Profile profile = profileService.getProfileById(id);
         profileService.deleteProfile(id);
         return profile;
