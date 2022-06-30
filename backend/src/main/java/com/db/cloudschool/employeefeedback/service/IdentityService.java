@@ -107,6 +107,10 @@ public class IdentityService {
         return identity;
     }
 
+    /**
+     * Gets all identities with confirmed E-mail address
+     * @return List of identities meeting criteria.
+     */
     public List<Identity> getAllIdentities() {
         return identityRepository.findAllByEmail_ConfirmedTrue();
     }
