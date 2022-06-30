@@ -9,6 +9,8 @@ import com.db.cloudschool.employeefeedback.repositories.IdentityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * The IdentityService can be considered
  * "the user service", as it manages the central identity
@@ -105,6 +107,10 @@ public class IdentityService {
         return identity;
     }
 
+    public List<Identity> getAllIdentities() {
+        return identityRepository.findAllByEmail_ConfirmedTrue();
+    }
+
     /**
      * Proceeds to delete Identity from database
      * by id from given object
@@ -117,6 +123,7 @@ public class IdentityService {
      * Proceeds to delete Identity from database by id
      */
     public Long deleteIdentity(Long apiUserId) {
+        //TODO: disable E-mail, Profile and Reviews
         identityRepository.deleteById(apiUserId);
 
         return apiUserId;
