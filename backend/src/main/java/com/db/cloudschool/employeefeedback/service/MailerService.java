@@ -9,10 +9,15 @@ import com.mailjet.client.transactional.TransactionalEmail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+/**
+ * The MailerService is responsible for sending emails.
+ * It uses the Mailjet API to send emails.
+ */
 @RequiredArgsConstructor
 @Service
 public class MailerService {
     final String emailConfirmationEndpoint = System.getenv("EFA_EMAIL_TOKEN_ENDPOINT");
+
 
     final ClientOptions options = ClientOptions.builder()
             .apiKey(System.getenv("MJ_APIKEY_PUBLIC"))
@@ -21,6 +26,13 @@ public class MailerService {
 
     final MailjetClient client = new MailjetClient(options);
 
+    /*
+     * Send the confirmation email to the user.
+     *
+     * @param address The email address of the user.
+     * @param token The token to confirm the email address.
+     * @throws MailjetException if the email could not be sent.
+     */
     public void sendConfirmationMail(String emailAddress, String token) throws MailjetException {
         TransactionalEmail message = TransactionalEmail
                 .builder()

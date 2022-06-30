@@ -19,6 +19,13 @@ public class OnboardRegisterService {
     EmailRepository emailRepository;
     EmailConfirmationService emailConfirmationService;
 
+    /*
+     * Register a new user.
+     *
+     * @param onboardRegisterDTO The user data.
+     * @return The user profile.
+     * @throws MailjetException if the email could not be sent.
+     */
     public Identity registerIdentity(OnboardRegisterDTO dto) throws MailjetException {
         return identityRepository.save(
                 Identity.builder()

@@ -8,12 +8,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+/**
+ * The EmailConfirmationService is responsible
+ * for creating and sending the email confirmation link.
+ */
 @RequiredArgsConstructor
 @Service
 public class EmailConfirmationService {
     EmailRepository emailRepository;
     MailerService mailerService;
 
+    /*
+     * Creates a new email and sends a confirmation email to the user.
+     * @param address the email address of the user.
+     * @return the email.
+     * @throws MailjetException if the email could not be sent.
+     */
     public Email createNewEmail(String address) throws MailjetException {
         String token = UUID.randomUUID().toString();
 
@@ -26,6 +36,12 @@ public class EmailConfirmationService {
                 .build());
     }
 
+    /**
+     * Confirm the email address.
+     *
+     * @param token The token to confirm the email address.
+     * @return The email address.
+     */
     public Email confirmEmail(String token) {
         Email email = emailRepository.getEmailByToken(token);
         email.setConfirmed(true);
