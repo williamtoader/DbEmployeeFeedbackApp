@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="430675fe-8a3c-4cf6-b83c-21d10d28f093" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/885f36f6-b439-4bd7-a93a-98f18762fb71.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/885f36f6-b439-4bd7-a93a-98f18762fb71.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/db/cloudschool/employeefeedback/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/db/cloudschool/employeefeedback/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/db/cloudschool/employeefeedback/service/ProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/db/cloudschool/employeefeedback/service/ProfileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/db/cloudschool/employeefeedback/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/db/cloudschool/employeefeedback/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +161,8 @@
       <workItem from="1656492073504" duration="5587000" />
       <workItem from="1656578001804" duration="6034000" />
       <workItem from="1656589432195" duration="119000" />
-      <workItem from="1656589560294" duration="1109000" />
+      <workItem from="1656589560294" duration="1224000" />
+      <workItem from="1656660381647" duration="2071000" />
     </task>
     <servers />
   </component>

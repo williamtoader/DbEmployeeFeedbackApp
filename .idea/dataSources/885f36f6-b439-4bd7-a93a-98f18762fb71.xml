@@ -3,15 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.39">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-13754||-9223372036854775808|c|G
-13754||10|c|G
-13754||10|C|G
-13754||10|T|G</Grants>
-      <IntrospectionStateNumber>740</IntrospectionStateNumber>
+      <IntrospectionStateNumber>787</IntrospectionStateNumber>
       <ServerVersion>14.4</ServerVersion>
       <StartupTime>1656297453</StartupTime>
       <TimeZones>true ACDT
@@ -793,7 +785,7 @@ true YEKST
 false YEKT
 false Z
 false Zulu
-false localtime
+true localtime
 false posix/Africa/Abidjan
 false posix/Africa/Accra
 false posix/Africa/Addis_Ababa
@@ -1407,7 +1399,7 @@ true posixrules
 13389||10|C|G
 13389||-9223372036854775808|U|G
 13389||10|U|G</Grants>
-      <IntrospectionStateNumber>740</IntrospectionStateNumber>
+      <IntrospectionStateNumber>789</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4833,10 +4825,534 @@ true posixrules
     <schema id="263" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>740</IntrospectionStateNumber>
+      <IntrospectionStateNumber>789</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>526</StateNumber>
       <OwnerName>postgres</OwnerName>
     </schema>
+    <sequence id="264" parent="263" name="hibernate_sequence">
+      <DataType>bigint|0s</DataType>
+      <ObjectId>16421</ObjectId>
+      <StateNumber>751</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="265" parent="263" name="email">
+      <ObjectId>16386</ObjectId>
+      <StateNumber>781</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="266" parent="263" name="identity">
+      <ObjectId>16391</ObjectId>
+      <StateNumber>763</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="267" parent="263" name="profile">
+      <ObjectId>16396</ObjectId>
+      <StateNumber>765</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="268" parent="263" name="profile_received_reviews">
+      <ObjectId>16403</ObjectId>
+      <StateNumber>766</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="269" parent="263" name="profile_sent_reviews">
+      <ObjectId>16406</ObjectId>
+      <StateNumber>767</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="270" parent="263" name="review">
+      <ObjectId>16409</ObjectId>
+      <StateNumber>769</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="271" parent="265" name="address">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>741</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="272" parent="265" name="confirmed">
+      <DataType>boolean|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>741</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="273" parent="265" name="identity_api_user_id">
+      <DataType>bigint|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>741</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="274" parent="265" name="token">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>781</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="275" parent="265" name="fkdm2w2p78rqxtomp0fal1drfge">
+      <ColNames>identity_api_user_id</ColNames>
+      <ObjectId>16422</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>identity_pkey</RefKeyName>
+      <StateNumber>752</StateNumber>
+      <RefTableId>16391</RefTableId>
+      <RefTableName>identity</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="276" parent="265" name="email_pkey">
+      <ColNames>address</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16389</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>741</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <index id="277" parent="265" name="uk_5mnwnthhhyk93rrdlq542cvrl">
+      <ColNames>token</ColNames>
+      <ObjectId>16494</ObjectId>
+      <StateNumber>783</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="278" parent="265" name="email_pkey">
+      <ColNames>address</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16390</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>741</StateNumber>
+      <UnderlyingIndexId>16389</UnderlyingIndexId>
+    </key>
+    <key id="279" parent="265" name="uk_5mnwnthhhyk93rrdlq542cvrl">
+      <ColNames>token</ColNames>
+      <ObjectId>16495</ObjectId>
+      <StateNumber>783</StateNumber>
+      <UnderlyingIndexId>16494</UnderlyingIndexId>
+    </key>
+    <column id="280" parent="266" name="api_user_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>742</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="281" parent="266" name="email_address">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>762</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="282" parent="266" name="profile_profile_id">
+      <DataType>bigint|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>763</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="283" parent="266" name="fk2vf10a7ffqwy63n83ap0lnwhv">
+      <ColNames>email_address</ColNames>
+      <ObjectId>16457</ObjectId>
+      <RefColNames>address</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>email_pkey</RefKeyName>
+      <StateNumber>770</StateNumber>
+      <RefTableId>16386</RefTableId>
+      <RefTableName>email</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="284" parent="266" name="fk9jcanimriyf2qb0wy4lr44o3v">
+      <ColNames>profile_profile_id</ColNames>
+      <ObjectId>16462</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>profile_pkey</RefKeyName>
+      <StateNumber>771</StateNumber>
+      <RefTableId>16396</RefTableId>
+      <RefTableName>profile</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="285" parent="266" name="identity_pkey">
+      <ColNames>api_user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16394</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>742</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="286" parent="266" name="identity_pkey">
+      <ColNames>api_user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16395</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>742</StateNumber>
+      <UnderlyingIndexId>16394</UnderlyingIndexId>
+    </key>
+    <column id="287" parent="267" name="api_user_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>743</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="288" parent="267" name="biography">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>743</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="289" parent="267" name="computed_score2">
+      <DataType>double precision|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>743</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="290" parent="267" name="computed_score3">
+      <DataType>double precision|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>743</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="291" parent="267" name="first_name">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>743</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="292" parent="267" name="last_name">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>6</Position>
+      <StateNumber>743</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="293" parent="267" name="profile_photourl">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>7</Position>
+      <StateNumber>743</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="294" parent="267" name="profile_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+      <StateNumber>764</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="295" parent="267" name="identity_api_user_id">
+      <DataType>bigint|0s</DataType>
+      <Position>9</Position>
+      <StateNumber>765</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="296" parent="267" name="fk8ju6j1a3cxljcaby0fm3wyhb5">
+      <ColNames>identity_api_user_id</ColNames>
+      <ObjectId>16467</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>identity_pkey</RefKeyName>
+      <StateNumber>772</StateNumber>
+      <RefTableId>16391</RefTableId>
+      <RefTableName>identity</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="297" parent="267" name="profile_pkey">
+      <ColNames>api_user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16401</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>743</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="298" parent="267" name="profile_pkey">
+      <ColNames>api_user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16402</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>743</StateNumber>
+      <UnderlyingIndexId>16401</UnderlyingIndexId>
+    </key>
+    <column id="299" parent="268" name="profile_api_user_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>744</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="300" parent="268" name="received_reviews_review_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>744</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="301" parent="268" name="profile_profile_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>766</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="302" parent="268" name="fk7s3wqnyf5jeyxcm4phhwebceu">
+      <ColNames>profile_api_user_id</ColNames>
+      <ObjectId>16432</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>profile_pkey</RefKeyName>
+      <StateNumber>754</StateNumber>
+      <RefTableId>16396</RefTableId>
+      <RefTableName>profile</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="303" parent="268" name="fkkvbb9nvpsxsk3chsxnkw9k99g">
+      <ColNames>received_reviews_review_id</ColNames>
+      <ObjectId>16427</ObjectId>
+      <RefColNames>review_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>review_pkey</RefKeyName>
+      <StateNumber>753</StateNumber>
+      <RefTableId>16409</RefTableId>
+      <RefTableName>review</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="304" parent="268" name="fkp7puuojrn5lxtnntyufvhlxe7">
+      <ColNames>profile_profile_id</ColNames>
+      <ObjectId>16472</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>profile_pkey</RefKeyName>
+      <StateNumber>773</StateNumber>
+      <RefTableId>16396</RefTableId>
+      <RefTableName>profile</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="305" parent="268" name="uk_o6qdb004w350wrfiq6r10tnta">
+      <ColNames>received_reviews_review_id</ColNames>
+      <ObjectId>16417</ObjectId>
+      <StateNumber>748</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="306" parent="268" name="uk_o6qdb004w350wrfiq6r10tnta">
+      <ColNames>received_reviews_review_id</ColNames>
+      <ObjectId>16418</ObjectId>
+      <StateNumber>748</StateNumber>
+      <UnderlyingIndexId>16417</UnderlyingIndexId>
+    </key>
+    <column id="307" parent="269" name="profile_api_user_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>745</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="308" parent="269" name="sent_reviews_review_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>745</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="309" parent="269" name="profile_profile_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>767</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="310" parent="269" name="fk7hwvrp4aqst2ksh25c347y65w">
+      <ColNames>profile_api_user_id</ColNames>
+      <ObjectId>16442</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>profile_pkey</RefKeyName>
+      <StateNumber>756</StateNumber>
+      <RefTableId>16396</RefTableId>
+      <RefTableName>profile</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="311" parent="269" name="fk1170rebvwlwv2c3kdmjosjdw">
+      <ColNames>sent_reviews_review_id</ColNames>
+      <ObjectId>16437</ObjectId>
+      <RefColNames>review_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>review_pkey</RefKeyName>
+      <StateNumber>755</StateNumber>
+      <RefTableId>16409</RefTableId>
+      <RefTableName>review</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="312" parent="269" name="fkth56ty58nyd3frt5u8qosc73l">
+      <ColNames>profile_profile_id</ColNames>
+      <ObjectId>16477</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>profile_pkey</RefKeyName>
+      <StateNumber>774</StateNumber>
+      <RefTableId>16396</RefTableId>
+      <RefTableName>profile</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="313" parent="269" name="uk_dpuc0mlpuej8rkusw1832gra">
+      <ColNames>sent_reviews_review_id</ColNames>
+      <ObjectId>16419</ObjectId>
+      <StateNumber>750</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="314" parent="269" name="uk_dpuc0mlpuej8rkusw1832gra">
+      <ColNames>sent_reviews_review_id</ColNames>
+      <ObjectId>16420</ObjectId>
+      <StateNumber>750</StateNumber>
+      <UnderlyingIndexId>16419</UnderlyingIndexId>
+    </key>
+    <check id="315" parent="270" name="review_score1_check">
+      <ColNames>score1</ColNames>
+      <ObjectId>16412</ObjectId>
+      <Predicate>(score1 &gt;= (10)::double precision) AND (score1 &lt;= (50)::double precision)</Predicate>
+      <StateNumber>746</StateNumber>
+    </check>
+    <check id="316" parent="270" name="review_score2_check">
+      <ColNames>score2</ColNames>
+      <ObjectId>16413</ObjectId>
+      <Predicate>(score2 &gt;= (10)::double precision) AND (score2 &lt;= (50)::double precision)</Predicate>
+      <StateNumber>746</StateNumber>
+    </check>
+    <check id="317" parent="270" name="review_score3_check">
+      <ColNames>score3</ColNames>
+      <ObjectId>16414</ObjectId>
+      <Predicate>(score3 &gt;= (10)::double precision) AND (score3 &lt;= (50)::double precision)</Predicate>
+      <StateNumber>746</StateNumber>
+    </check>
+    <column id="318" parent="270" name="review_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>746</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="319" parent="270" name="comment">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>746</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="320" parent="270" name="score1">
+      <DataType>double precision|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>746</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="321" parent="270" name="score2">
+      <DataType>double precision|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>746</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="322" parent="270" name="score3">
+      <DataType>double precision|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>746</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="323" parent="270" name="receiver_api_user_id">
+      <DataType>bigint|0s</DataType>
+      <Position>6</Position>
+      <StateNumber>746</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="324" parent="270" name="sender_api_user_id">
+      <DataType>bigint|0s</DataType>
+      <Position>7</Position>
+      <StateNumber>746</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="325" parent="270" name="receiver_profile_id">
+      <DataType>bigint|0s</DataType>
+      <Position>8</Position>
+      <StateNumber>768</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="326" parent="270" name="sender_profile_id">
+      <DataType>bigint|0s</DataType>
+      <Position>9</Position>
+      <StateNumber>769</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="327" parent="270" name="fke5wuuufm9hwd5u2n0yxnprvak">
+      <ColNames>receiver_api_user_id</ColNames>
+      <ObjectId>16447</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>profile_pkey</RefKeyName>
+      <StateNumber>757</StateNumber>
+      <RefTableId>16396</RefTableId>
+      <RefTableName>profile</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="328" parent="270" name="fkqd8vbbjupxnv8sqvn69ra2ghw">
+      <ColNames>sender_api_user_id</ColNames>
+      <ObjectId>16452</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>profile_pkey</RefKeyName>
+      <StateNumber>758</StateNumber>
+      <RefTableId>16396</RefTableId>
+      <RefTableName>profile</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="329" parent="270" name="fk459h9mk8h3ueyw39eqxibiknn">
+      <ColNames>receiver_profile_id</ColNames>
+      <ObjectId>16482</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>profile_pkey</RefKeyName>
+      <StateNumber>775</StateNumber>
+      <RefTableId>16396</RefTableId>
+      <RefTableName>profile</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="330" parent="270" name="fkcyawyht2m8fh072fhf6y1exm4">
+      <ColNames>sender_profile_id</ColNames>
+      <ObjectId>16487</ObjectId>
+      <RefColNames>api_user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>profile_pkey</RefKeyName>
+      <StateNumber>776</StateNumber>
+      <RefTableId>16396</RefTableId>
+      <RefTableName>profile</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="331" parent="270" name="review_pkey">
+      <ColNames>review_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16415</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>746</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="332" parent="270" name="review_pkey">
+      <ColNames>review_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16416</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>746</StateNumber>
+      <UnderlyingIndexId>16415</UnderlyingIndexId>
+    </key>
   </database-model>
 </dataSource>

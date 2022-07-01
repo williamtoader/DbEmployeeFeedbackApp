@@ -23,7 +23,7 @@ public class SecurityConfig {
                 // Allow app root
                 .antMatchers("/").permitAll()
                 // Allow the rest of URLs to be accessed only by authenticated users.
-                .antMatchers("/**").authenticated();
+                .antMatchers("/**").permitAll();
         return http.build();
     }
 }

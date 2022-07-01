@@ -38,7 +38,7 @@ public class ProfileController {
      * @return an arraylist of profiles
      * @throws ProfileNotFoundException
      */
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public ArrayList<Profile> getProfilesByName(@PathVariable String name) throws ProfileNotFoundException {
         Set<Profile> profileSet = new HashSet<>();
         profileSet.addAll(profileService.getProfilesByFirstName(name));
@@ -54,7 +54,7 @@ public class ProfileController {
      * @return a list of profiles
      * @throws ProfileNotFoundException
      */
-    @GetMapping("/{firstName}/{lastName}")
+    @GetMapping("/fullname/{firstName}/{lastName}")
     public List<Profile> getProfilesByFullName(@PathVariable String firstName, @PathVariable String lastName) throws ProfileNotFoundException {
         return profileService.getProfilesByFullName(firstName, lastName);
     }
@@ -91,9 +91,7 @@ public class ProfileController {
      * @throws ProfileNotFoundException
      */
     @DeleteMapping("/delete/{id}")
-    public Profile delete(@PathVariable Long id) throws ProfileNotFoundException {
-        Profile profile = profileService.getProfileById(id);
+    public void delete(@PathVariable Long id) throws ProfileNotFoundException {
         profileService.deleteProfile(id);
-        return profile;
     }
 }
