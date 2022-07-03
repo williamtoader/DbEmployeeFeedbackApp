@@ -1,12 +1,11 @@
 package com.db.cloudschool.employeefeedback.model;
 
+import com.db.cloudschool.employeefeedback.security.model.Credentials;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,4 +23,10 @@ public class Identity implements Serializable {
 
     @OneToOne
     private Email email;
+
+    @OneToOne
+    private Credentials credentials;
+
+    @ElementCollection
+    List<String> roles;
 }

@@ -15,8 +15,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Service
 public class EmailConfirmationService {
-    EmailRepository emailRepository;
-    MailerService mailerService;
+    final EmailRepository emailRepository;
+    final MailerService mailerService;
 
     /*
      * Creates a new email and sends a confirmation email to the user.
@@ -30,6 +30,7 @@ public class EmailConfirmationService {
         mailerService.sendConfirmationMail(address, token);
 
         return emailRepository.save(Email.builder()
+                        .address(address)
                         .token(token)
                         .confirmed(false)
                         .identity(null)
