@@ -24,6 +24,7 @@ public class ReviewService {
         return reviewOpt.orElse(null);
     }
 
+    //TODO: change Profile to Identity
     public Review create(ReviewDTO reviewDTO, Profile sender, Profile receiver) throws Exception {
         if(sender != receiver) {
             Review newReview = new Review();
