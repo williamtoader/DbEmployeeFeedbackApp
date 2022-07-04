@@ -137,8 +137,8 @@ public class ProfileService {
      * @param index
      * @return the average score which will be overwritten in the profile
      */
-    public Double computeScores(List<Review> reviews, int index) {
-        Double sum = 0.0;
+    public Integer computeScores(List<Review> reviews, int index) {
+        Integer sum = 0;
         if(index == 1) {
             for(Review rev : reviews) {
                 sum += rev.getScore1();

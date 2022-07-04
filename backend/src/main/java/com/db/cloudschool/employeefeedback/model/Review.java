@@ -27,15 +27,15 @@ public class Review {
 
     @Min(10)
     @Max(50)
-    private Double score1;
+    private Integer score1;
 
     @Min(10)
     @Max(50)
-    private Double score2;
+    private Integer score2;
 
     @Min(10)
     @Max(50)
-    private Double score3;
+    private Integer score3;
 
     private String comment;
 }

@@ -25,9 +25,9 @@ public class Profile {
      * Mean score for all reviews based upon review policy.
      */
     @Transient
-    private Double computedScore1;
-    private Double computedScore2;
-    private Double computedScore3;
+    private Integer computedScore1;
+    private Integer computedScore2;
+    private Integer computedScore3;
 
     @OneToMany
     List<Review> receivedReviews;
