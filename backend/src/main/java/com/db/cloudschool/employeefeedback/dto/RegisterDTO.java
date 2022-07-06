@@ -1,14 +1,12 @@
 package com.db.cloudschool.employeefeedback.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@Getter
-@Setter
+@Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class OnboardRegisterDTO {
+public class RegisterDTO {
     String emailAddress;
     /**
      * Expecting plain text password
@@ -19,6 +17,9 @@ public class OnboardRegisterDTO {
     /**
      * Expecting small png/jpeg file
      */
-    MultipartFile profilePhoto;
+    @JsonProperty()
+    String profilePhoto;
+    @JsonProperty()
     String biography;
+
 }

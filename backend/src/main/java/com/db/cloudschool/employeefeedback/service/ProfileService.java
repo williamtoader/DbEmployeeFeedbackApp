@@ -5,9 +5,9 @@ import com.db.cloudschool.employeefeedback.model.Profile;
 import com.db.cloudschool.employeefeedback.model.Review;
 import com.db.cloudschool.employeefeedback.repositories.ProfileRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,11 +28,12 @@ public class ProfileService {
      * @return the profile with the specified id
      * @throws ProfileNotFoundException
      */
-    public Profile getProfileById(Long id) throws ProfileNotFoundException{
-        if(profileRepository.getProfileByProfileId(id) == null) {
+    @Transactional
+    public Profile getProfileById(Long id) throws ProfileNotFoundException {
+        if(profileRepository.findById(id).orElse(null) == null) {
             throw new ProfileNotFoundException();
         } else {
-            return profileRepository.getProfileByProfileId(id);
+            return profileRepository.findById(id).orElse(null);
         }
     }
 
@@ -164,6 +165,6 @@ public class ProfileService {
      * @param id
      */
     public void deleteProfile (Long id){
-        profileRepository.delete(profileRepository.getProfileByProfileId(id));
+        profileRepository.delete(profileRepository.findById(id).orElseThrow());
     }
 }

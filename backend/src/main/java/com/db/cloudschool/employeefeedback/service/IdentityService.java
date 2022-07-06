@@ -9,6 +9,7 @@ import com.db.cloudschool.employeefeedback.repositories.IdentityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class IdentityService {
-    private IdentityRepository identityRepository;
+    private final IdentityRepository identityRepository;
 
     /**
      * This function will throw typed Exception if the identity
@@ -57,10 +58,31 @@ public class IdentityService {
      * @throws IdentityNotFoundException
      * Identity asserted as valid was found to be null.
      */
+    @Transactional
     public Identity getIdentity(Email email) throws
             EmailAddressNotConfirmedException,
             IdentityNotFoundException {
         Identity identity = identityRepository.findByEmail(email);
+
+        assertIsValidIdentityOutput(identity);
+
+        return identity;
+    }
+
+    /**
+     * @param apiUserId Identifier connected to identity.
+     * @return Identity
+     * @throws EmailAddressNotConfirmedException
+     * Email address of the identity was not confirmed
+     * so identity should not be considered valid.
+     * @throws IdentityNotFoundException
+     * Identity asserted as valid was found to be null.
+     */
+    @Transactional
+    public Identity getIdentity(Long apiUserId) throws
+            EmailAddressNotConfirmedException,
+            IdentityNotFoundException {
+        Identity identity = identityRepository.findById(apiUserId).orElse(null);
 
         assertIsValidIdentityOutput(identity);
 
@@ -77,6 +99,7 @@ public class IdentityService {
      * @throws IdentityNotFoundException
      * Identity asserted as valid was found to be null.
      */
+    @Transactional
     public Identity getIdentity(String emailAddress) throws
             EmailAddressNotConfirmedException,
             IdentityNotFoundException {
@@ -96,6 +119,7 @@ public class IdentityService {
      * @throws IdentityNotFoundException
      * Identity asserted as valid was found to be null.
      */
+    @Transactional
     public Identity getIdentity(Profile profile) throws
             EmailAddressNotConfirmedException,
             IdentityNotFoundException
@@ -111,6 +135,7 @@ public class IdentityService {
      * Gets all identities with confirmed E-mail address
      * @return List of identities meeting criteria.
      */
+    @Transactional
     public List<Identity> getAllIdentities() {
         return identityRepository.findAllByEmail_ConfirmedTrue();
     }

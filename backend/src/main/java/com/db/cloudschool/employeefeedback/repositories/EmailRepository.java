@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmailRepository extends JpaRepository<Email, String> {
-    Email getEmailByToken(String token);
+    Email findByToken(String token);
+    Boolean existsByAddress(String address);
+    Email findByAddress(String address);
 }

@@ -8,5 +8,6 @@ import java.util.Collection;
 public class JwtAuthenticationToken extends UsernamePasswordAuthenticationToken {
     public JwtAuthenticationToken(String jwt) {
         super(null, jwt, null);
+        this.setAuthenticated(false);
     }
 }

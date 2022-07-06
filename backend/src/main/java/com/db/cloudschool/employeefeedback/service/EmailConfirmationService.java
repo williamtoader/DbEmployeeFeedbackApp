@@ -1,7 +1,9 @@
 package com.db.cloudschool.employeefeedback.service;
 
 import com.db.cloudschool.employeefeedback.model.Email;
+import com.db.cloudschool.employeefeedback.model.Identity;
 import com.db.cloudschool.employeefeedback.repositories.EmailRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mailjet.client.errors.MailjetException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,16 +26,16 @@ public class EmailConfirmationService {
      * @return the email.
      * @throws MailjetException if the email could not be sent.
      */
-    public Email createNewEmail(String address) throws MailjetException {
+    public Email createNewEmail(String address, Identity identity) throws MailjetException {
         String token = UUID.randomUUID().toString();
 
         mailerService.sendConfirmationMail(address, token);
-
+        //
         return emailRepository.save(Email.builder()
                         .address(address)
                         .token(token)
                         .confirmed(false)
-                        .identity(null)
+                        .identity(identity)
                 .build());
     }
 
@@ -44,7 +46,7 @@ public class EmailConfirmationService {
      * @return The email address.
      */
     public Email confirmEmail(String token) {
-        Email email = emailRepository.getEmailByToken(token);
+        Email email = emailRepository.findByToken(token);
         email.setConfirmed(true);
         return emailRepository.save(email);
     }

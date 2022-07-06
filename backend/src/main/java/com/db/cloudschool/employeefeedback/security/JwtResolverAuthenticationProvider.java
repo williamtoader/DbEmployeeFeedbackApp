@@ -1,5 +1,7 @@
 package com.db.cloudschool.employeefeedback.security;
 
+import com.db.cloudschool.employeefeedback.exceptions.EmailAddressNotConfirmedException;
+import com.db.cloudschool.employeefeedback.exceptions.IdentityNotFoundException;
 import com.db.cloudschool.employeefeedback.model.Identity;
 import com.db.cloudschool.employeefeedback.security.decorator.AuthenticationStatusToken;
 import com.db.cloudschool.employeefeedback.security.decorator.JwtAuthenticationToken;
@@ -16,6 +18,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,12 +27,13 @@ import java.util.stream.Collectors;
  */
 @Component
 @RequiredArgsConstructor
-public class JwtResolverAuthenticationManager implements org.springframework.security.authentication.AuthenticationManager {
+public class JwtResolverAuthenticationProvider implements org.springframework.security.authentication.AuthenticationProvider{
     private final SecretsService secretsService;
     private final IdentityService identityService;
     private final CredentialsService credentialsService;
 
     @Override
+    @Transactional
     public AuthenticationStatusToken authenticate(Authentication authentication) throws AuthenticationException {
         if (!(authentication instanceof JwtAuthenticationToken)) throw new BadCredentialsException("1000");
         String jwt = (String) authentication.getCredentials();
@@ -37,17 +41,21 @@ public class JwtResolverAuthenticationManager implements org.springframework.sec
             Identity identity = credentialsService.validateAccessToken(jwt);
             return new AuthenticationStatusToken(
                     identity,
-                    true,
                     identity.getRoles()
                             .stream()
                             .map(SimpleGrantedAuthority::new)
-                            .collect(Collectors.toList())
+                            .collect(Collectors.toSet())
             );
 
-        } catch (JwtException e) {
+        } catch (JwtException | EmailAddressNotConfirmedException | IdentityNotFoundException e) {
             // JWT check failed
             throw new BadCredentialsException("Jwt validation failed");
         }
 
+    }
+
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return authentication.equals(JwtAuthenticationToken.class);
     }
 }
