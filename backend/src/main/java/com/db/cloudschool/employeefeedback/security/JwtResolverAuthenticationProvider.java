@@ -35,17 +35,18 @@ public class JwtResolverAuthenticationProvider implements org.springframework.se
     @Override
     @Transactional
     public AuthenticationStatusToken authenticate(Authentication authentication) throws AuthenticationException {
-        if (!(authentication instanceof JwtAuthenticationToken)) throw new BadCredentialsException("1000");
+        if (!(authentication instanceof JwtAuthenticationToken)) throw new BadCredentialsException("Authentication service problems");
         String jwt = (String) authentication.getCredentials();
         try {
             Identity identity = credentialsService.validateAccessToken(jwt);
-            return new AuthenticationStatusToken(
+            if(identity != null) return new AuthenticationStatusToken(
                     identity,
                     identity.getRoles()
                             .stream()
                             .map(SimpleGrantedAuthority::new)
                             .collect(Collectors.toSet())
             );
+            else throw new BadCredentialsException("Authentication failure");
 
         } catch (JwtException | EmailAddressNotConfirmedException | IdentityNotFoundException e) {
             // JWT check failed
