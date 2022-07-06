@@ -44,17 +44,17 @@ public class RegistrationServiceTests {
     ObjectMapper objectMapper = new ObjectMapper();
 
 
-    @Test
-    @Transactional
-    public void registerIdentity_HardcodedData_PopulateTables()
-            throws EmailAddressNotConfirmedException, IdentityNotFoundException, MailjetException, JsonProcessingException {
-        Identity identity = registrationService.registerIdentity(RegisterDTO.builder()
-                .emailAddress("wiliamtoader@protonmail.com")
-                .biography("Dev at DB")
-                .password("1234")
-                .firstName("Wiliam")
-                .lastName("Toader")
-                .build());
-        System.out.println(objectMapper.writeValueAsString(identity));
-    }
+//    @Test
+//    @Transactional
+//    public void registerIdentity_HardcodedData_PopulateTables()
+//            throws EmailAddressNotConfirmedException, IdentityNotFoundException, MailjetException, JsonProcessingException {
+//        Identity identity = registrationService.registerIdentity(RegisterDTO.builder()
+//                .emailAddress("wiliamtoader@protonmail.com")
+//                .biography("Dev at DB")
+//                .password("1234")
+//                .firstName("Wiliam")
+//                .lastName("Toader")
+//                .build());
+//        System.out.println(objectMapper.writeValueAsString(identity));
+//    }
 }
