@@ -30,8 +30,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RestController
 @RequiredArgsConstructor
 public class ProfileController {
-    //TODO: inject service here and refactor
-
     private final IdentityService identityService;
     private final ProfileService profileService;
 
@@ -75,7 +73,7 @@ public class ProfileController {
                 .score1(profileService.computeScores(
                         identity.getProfile().getReceivedReviews(),
                         1
-                ))
+                ) / 10)
                 .score2(profileService.computeScores(
                         identity.getProfile().getReceivedReviews(),
                         2
