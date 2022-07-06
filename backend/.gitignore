@@ -34,3 +34,6 @@ build/
 
 # Author ID #
 /src/main/resources/author-id.txt
+
+# Ignored development and testing folders #
+/src/main/java/com/db/cloudschool/employeefeedback/junkfiles

@@ -1,12 +1,11 @@
 package com.db.cloudschool.employeefeedback.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
@@ -19,10 +18,14 @@ public class Review {
     @GeneratedValue
     private Long reviewId;
 
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name="sender_profile_id", referencedColumnName = "id")
     private Profile sender;
 
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name="receiver_profile_id", referencedColumnName = "id")
     private Profile receiver;
 
     @Min(10)
@@ -36,6 +39,8 @@ public class Review {
     @Min(10)
     @Max(50)
     private Double score3;
+
+    private Long timestamp;
 
     private String comment;
 }
