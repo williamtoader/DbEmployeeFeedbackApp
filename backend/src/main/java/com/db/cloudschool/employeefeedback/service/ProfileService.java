@@ -157,6 +157,7 @@ public class ProfileService {
                 }
                 break;
         }
+        if(reviews.size() == 0) return -1.0;
         return sum/reviews.size();
     }
 

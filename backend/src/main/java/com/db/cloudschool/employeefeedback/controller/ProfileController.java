@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -44,6 +45,27 @@ public class ProfileController {
                         .firstName(identity.getProfile().getFirstName())
                         .lastName(identity.getProfile().getLastName())
                         .build()).collect(Collectors.toList());
+    }
+
+    @GetMapping(path = "/profiles/removecurrent")
+    public List<ProfileListingResponse> getAllWithoutUser(Authentication authentication){
+        if(authentication.isAuthenticated() && authentication instanceof AuthenticationStatusToken) {
+            Identity current = ((AuthenticationStatusToken) authentication).getPrincipal();
+            return identityService.getAllIdentities().stream()
+                    .filter(identity -> !Objects.equals(identity.getApiUserId(), current.getApiUserId()))
+                    .map(identity -> ProfileListingResponse
+                            .builder()
+                            .apiUserId(identity.getApiUserId())
+                            .emailAddress(identity.getEmail().getAddress())
+                            .profilePhotoURL(identity.getProfile().getProfilePhotoURL())
+                            .firstName(identity.getProfile().getFirstName())
+                            .lastName(identity.getProfile().getLastName())
+                            .build()).collect(Collectors.toList());
+        }
+        else {
+            throw new BadCredentialsException("Not authenticated");
+        }
+
     }
 
     @GetMapping(path = "/profile/id/{id}")
