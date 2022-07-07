@@ -24,10 +24,10 @@ public class ReviewController {
     private final IdentityService identityService;
 
     @PostMapping(path = "/id/{id}")
-    public ReviewIdResponse addReviewForUserById(Authentication authentication, @PathVariable Long userId, @RequestBody ReviewDTO reviewDTO) throws Exception {
+    public ReviewIdResponse addReviewForUserById(Authentication authentication, @PathVariable Long id, @RequestBody ReviewDTO reviewDTO) throws Exception {
         if(authentication.isAuthenticated() && authentication instanceof AuthenticationStatusToken) {
             Profile sender = ((AuthenticationStatusToken) authentication).getPrincipal().getProfile();
-            Profile receiver = identityService.getIdentity(userId).getProfile();
+            Profile receiver = identityService.getIdentity(id).getProfile();
             return new ReviewIdResponse(reviewService.create(reviewDTO, sender, receiver).getReviewId());
         }
         else {
